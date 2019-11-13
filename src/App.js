@@ -9,6 +9,22 @@ function App() {
   const [homeScore, setHomeScore] = useState(0);
   const [awayScore, setAwayScore] = useState(0);
 
+  const homeTD = event => {
+    setHomeScore(homeScore + 7);
+  }
+
+  const homeFG = event => {
+    setHomeScore(homeScore + 3)
+  }
+
+  const awayTD = event => {
+    setAwayScore(awayScore + 7);
+  }
+
+  const awayFG = event => {
+    setAwayScore(awayScore + 3)
+  }
+
   return (
     <div className="container">
       <section className="scoreboard">
@@ -18,12 +34,12 @@ function App() {
 
             {/* TODO STEP 3 - We need to change the hardcoded values in these divs to accept dynamic values from our state. */}
 
-            <div className="home__score">32</div>
+            <div className="home__score">{homeScore}</div>
           </div>
           <div className="timer">00:03</div>
           <div className="away">
             <h2 className="away__name">Tigers</h2>
-            <div className="away__score">32</div>
+            <div className="away__score">{awayScore}</div>
           </div>
         </div>
         <BottomRow />
@@ -31,12 +47,12 @@ function App() {
       <section className="buttons">
         <div className="homeButtons">
           {/* TODO STEP 4 - Now we need to attach our state setter functions to click listeners. */}
-          <button className="homeButtons__touchdown">Home Touchdown</button>
-          <button className="homeButtons__fieldGoal">Home Field Goal</button>
+          <button onClick={homeTD} className="homeButtons__touchdown">Home Touchdown</button>
+          <button onClick={homeFG} className="homeButtons__fieldGoal">Home Field Goal</button>
         </div>
         <div className="awayButtons">
-          <button className="awayButtons__touchdown">Away Touchdown</button>
-          <button className="awayButtons__fieldGoal">Away Field Goal</button>
+          <button onClick={awayTD} className="awayButtons__touchdown">Away Touchdown</button>
+          <button onClick={awayFG} className="awayButtons__fieldGoal">Away Field Goal</button>
         </div>
       </section>
     </div>
